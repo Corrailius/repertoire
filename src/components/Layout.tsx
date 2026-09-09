@@ -26,7 +26,7 @@ function Layout() {
       </main>
 
       <footer className="border-t border-white/10 py-6 text-center text-xs text-mist-dim">
-        Recipes worth repeating.
+        Comfort food that last in memory.
       </footer>
     </div>
   )
