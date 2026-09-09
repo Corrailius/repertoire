@@ -1,6 +1,4 @@
-/*
-type Ingredient = {
-quantity: string
-label: string
+export type Ingredient = {
+  name: string
+  quantity: string
 }
- */
