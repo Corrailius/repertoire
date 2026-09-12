@@ -1,0 +1,270 @@
+.team-builder {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at 50% 40%,
+            rgba(124, 58, 237, 0.12),
+            transparent 55%),
+        #05030b;
+
+    perspective: 1400px;
+}
+
+.research-sheet {
+    position: relative;
+
+    width: min(1200px, 90vw);
+    height: min(760px, 88vh);
+
+    padding: 45px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(ellipse at 15% 20%,
+            rgba(104, 78, 45, 0.12),
+            transparent 35%),
+        radial-gradient(ellipse at 80% 75%,
+            rgba(71, 52, 30, 0.15),
+            transparent 40%),
+        #cdbf9f;
+
+    color: #2b241b;
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.65),
+        inset 0 0 70px rgba(70, 48, 25, 0.2);
+
+    transform-origin: center;
+
+    animation:
+        notebook-open 1.1s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+.research-sheet::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse at 50% 0%,
+            transparent 45%,
+            rgba(67, 46, 24, 0.22));
+
+    box-shadow:
+        inset 0 0 45px rgba(50, 35, 20, 0.4);
+}
+
+.research-sheet::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.25;
+
+    background:
+        radial-gradient(ellipse at 30% 40%,
+            rgba(20, 18, 15, 0.35),
+            transparent 12%),
+        radial-gradient(ellipse at 72% 63%,
+            rgba(20, 18, 15, 0.25),
+            transparent 16%);
+}
+
+.research-header {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 12px;
+
+    border-bottom:
+        1px solid rgba(43, 36, 27, 0.45);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    z-index: 2;
+}
+
+.team-section {
+    position: relative;
+
+    margin-top: 35px;
+
+    z-index: 2;
+}
+
+.team-section h1 {
+    margin: 0 0 25px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 22px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transform: rotate(-1deg);
+}
+
+.team-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 28px;
+
+    width: 720px;
+}
+
+.team-slot {
+    position: relative;
+
+    height: 145px;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(135deg,
+            #e6d65f,
+            #d8c64b);
+
+    box-shadow:
+        4px 7px 9px rgba(45, 33, 17, 0.28);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+
+    transform:
+        rotate(-2deg);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.team-slot:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.team-slot:nth-child(3) {
+    transform: rotate(-1deg);
+}
+
+.team-slot:nth-child(4) {
+    transform: rotate(3deg);
+}
+
+.team-slot:nth-child(5) {
+    transform: rotate(-3deg);
+}
+
+.team-slot:nth-child(6) {
+    transform: rotate(1deg);
+}
+
+
+.team-slot:hover {
+    transform:
+        rotate(0deg) translateY(-5px);
+
+    box-shadow:
+        7px 13px 14px rgba(45, 33, 17, 0.35);
+}
+
+.research-notes {
+    position: absolute;
+
+    right: 55px;
+    top: 170px;
+
+    width: 250px;
+
+    z-index: 2;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    transform:
+        rotate(2deg);
+}
+
+.research-notes p:first-child {
+    font-size: 18px;
+
+    font-weight: bold;
+
+    text-decoration:
+        underline;
+}
+
+@keyframes notebook-open {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            rotateY(-88deg) scale(0.82) translateX(-80px);
+
+        filter:
+            blur(12px);
+    }
+
+    55% {
+        opacity: 1;
+
+        transform:
+            rotateY(-12deg) scale(0.97) translateX(-10px);
+
+        filter:
+            blur(2px);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            rotateY(0deg) scale(1) translateX(0);
+
+        filter:
+            blur(0);
+    }
+}
