@@ -1,92 +1,175 @@
 .team-builder {
     position: relative;
-
     width: 100%;
     height: 100vh;
-
     overflow: hidden;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     background:
-        radial-gradient(circle at 50% 40%,
-            rgba(124, 58, 237, 0.12),
-            transparent 55%),
+        radial-gradient(circle at 50% 45%,
+            rgba(72, 35, 130, 0.18),
+            transparent 45%),
         #05030b;
 
-    perspective: 1400px;
+    color: #30291f;
+
+    font-family:
+        "Courier New",
+        monospace;
 }
 
+
+
 .research-sheet {
-    position: relative;
+    position: absolute;
 
-    width: min(1200px, 90vw);
-    height: min(760px, 88vh);
+    top: 50%;
+    left: 50%;
 
-    padding: 45px;
+    width: min(1100px, 82vw);
+    height: min(700px, 78vh);
+
+    transform:
+        translate(-50%, -50%) rotate(-0.15deg);
 
     box-sizing: border-box;
+    padding: 45px;
 
     overflow: hidden;
 
     background:
-        radial-gradient(ellipse at 15% 20%,
-            rgba(104, 78, 45, 0.12),
-            transparent 35%),
-        radial-gradient(ellipse at 80% 75%,
-            rgba(71, 52, 30, 0.15),
-            transparent 40%),
-        #cdbf9f;
 
-    color: #2b241b;
+        linear-gradient(90deg,
+            transparent 48.8%,
+            rgba(70, 55, 35, 0.08) 49.2%,
+            rgba(255, 255, 255, 0.08) 50%,
+            transparent 50.7%),
+
+        linear-gradient(0deg,
+            transparent 67%,
+            rgba(70, 55, 35, 0.07) 67.3%,
+            rgba(255, 255, 255, 0.07) 68%,
+            transparent 68.5%),
+
+        radial-gradient(ellipse at 31% 76%,
+            rgba(45, 39, 31, 0.16),
+            transparent 18%),
+
+        radial-gradient(ellipse at 88% 24%,
+            rgba(72, 55, 30, 0.13),
+            transparent 16%),
+
+        radial-gradient(ellipse at 72% 70%,
+            rgba(117, 96, 55, 0.13),
+            transparent 25%),
+
+        radial-gradient(ellipse at 18% 38%,
+            rgba(45, 40, 35, 0.10),
+            transparent 20%),
+
+        radial-gradient(ellipse at 50% 50%,
+            transparent 45%,
+            rgba(82, 62, 32, 0.13) 100%),
+
+
+        linear-gradient(135deg,
+            #cfc09a,
+            #e1d2ad 38%,
+            #d2c29b 68%,
+            #c7b78f);
 
     box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.65),
-        inset 0 0 70px rgba(70, 48, 25, 0.2);
 
-    transform-origin: center;
+        0 25px 70px rgba(0, 0, 0, 0.75),
 
-    animation:
-        notebook-open 1.1s cubic-bezier(.2, .8, .2, 1) forwards;
+        inset 0 0 55px rgba(66, 45, 20, 0.22),
+
+        inset 0 0 12px rgba(45, 30, 15, 0.30);
+
+    isolation: isolate;
+
+    z-index: 1;
 }
+
+
 
 .research-sheet::before {
     content: "";
 
     position: absolute;
-    inset: 0;
+    inset: 12px;
+
+    border:
+        1px solid rgba(65, 48, 28, 0.20);
 
     pointer-events: none;
 
-    background:
-        radial-gradient(ellipse at 50% 0%,
-            transparent 45%,
-            rgba(67, 46, 24, 0.22));
-
-    box-shadow:
-        inset 0 0 45px rgba(50, 35, 20, 0.4);
+    z-index: 1;
 }
+
+
 
 .research-sheet::after {
     content: "";
 
     position: absolute;
-    inset: 0;
+
+    width: 460px;
+    height: 280px;
+
+    left: 13%;
+    top: 35%;
+
+    background:
+        linear-gradient(172deg,
+            transparent 0%,
+            transparent 18%,
+            rgba(45, 42, 38, 0.12) 19%,
+            rgba(45, 42, 38, 0.18) 21%,
+            rgba(45, 42, 38, 0.08) 24%,
+            transparent 27%,
+            transparent 100%),
+
+        linear-gradient(168deg,
+            transparent 0%,
+            transparent 31%,
+            rgba(48, 45, 41, 0.16) 32%,
+            rgba(48, 45, 41, 0.21) 34%,
+            rgba(48, 45, 41, 0.07) 38%,
+            transparent 41%,
+            transparent 100%),
+
+        linear-gradient(175deg,
+            transparent 0%,
+            transparent 46%,
+            rgba(50, 47, 43, 0.13) 47%,
+            rgba(50, 47, 43, 0.19) 49%,
+            rgba(50, 47, 43, 0.06) 53%,
+            transparent 56%,
+            transparent 100%),
+        radial-gradient(ellipse at 45% 48%,
+            rgba(55, 51, 46, 0.13),
+            rgba(55, 51, 46, 0.07) 35%,
+            transparent 65%);
+
+    filter: blur(2px);
+
+    transform:
+        rotate(-9deg) skewX(-8deg);
+
+    opacity: 0.9;
 
     pointer-events: none;
 
-    opacity: 0.25;
-
-    background:
-        radial-gradient(ellipse at 30% 40%,
-            rgba(20, 18, 15, 0.35),
-            transparent 12%),
-        radial-gradient(ellipse at 72% 63%,
-            rgba(20, 18, 15, 0.25),
-            transparent 16%);
+    z-index: 2;
 }
+
+
+
+.research-sheet>* {
+    position: relative;
+    z-index: 3;
+}
+
 
 .research-header {
     position: relative;
@@ -94,10 +177,436 @@
     display: flex;
     justify-content: space-between;
 
-    padding-bottom: 12px;
+    padding-bottom: 14px;
 
     border-bottom:
-        1px solid rgba(43, 36, 27, 0.45);
+        1px solid rgba(55, 44, 30, 0.45);
+
+    font-size: 11px;
+    letter-spacing: 3px;
+
+    color: #4b4235;
+}
+
+.research-header span:first-child {
+    transform: rotate(-0.4deg);
+}
+
+.research-header span:last-child {
+    transform: rotate(0.5deg);
+}
+
+
+
+.team-section {
+    position: relative;
+
+    width: 72%;
+
+    margin-top: 38px;
+}
+
+.team-section h1 {
+    margin: 0 0 25px;
+
+    font-size: 20px;
+    font-weight: normal;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    transform:
+        rotate(-0.7deg);
+}
+
+
+.team-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(150px, 1fr));
+
+    gap:
+        25px 22px;
+
+    padding:
+        8px 5px 25px;
+}
+
+
+.team-slot {
+    position: relative;
+
+    min-height: 125px;
+
+    box-sizing: border-box;
+
+    padding: 18px;
+
+    background:
+        linear-gradient(135deg,
+            #f1d96b,
+            #e7ca59);
+
+    color: #302819;
+
+    border: none;
+
+    box-shadow:
+        3px 6px 9px rgba(45, 32, 15, 0.32),
+        inset 0 0 18px rgba(100, 75, 20, 0.08);
+
+    transform:
+        rotate(-1.2deg);
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+
+    z-index: 1;
+}
+
+
+
+.team-slot:nth-child(2) {
+    transform:
+        rotate(1.8deg);
+
+    background:
+        linear-gradient(135deg,
+            #f0d765,
+            #e4c550);
+}
+
+.team-slot:nth-child(3) {
+    transform:
+        rotate(-0.5deg);
+}
+
+.team-slot:nth-child(4) {
+    transform:
+        rotate(2.2deg);
+}
+
+.team-slot:nth-child(5) {
+    transform:
+        rotate(-2deg);
+}
+
+.team-slot:nth-child(6) {
+    transform:
+        rotate(0.8deg);
+}
+
+
+.team-slot::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(ellipse at 25% 70%,
+            rgba(50, 43, 35, 0.10),
+            transparent 35%),
+
+        radial-gradient(ellipse at 80% 20%,
+            rgba(80, 60, 20, 0.08),
+            transparent 30%);
+
+    pointer-events: none;
+}
+
+
+.team-slot::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    width: 18px;
+    height: 18px;
+
+    background:
+        linear-gradient(135deg,
+            transparent 48%,
+            rgba(75, 55, 15, 0.18) 50%);
+
+    pointer-events: none;
+}
+
+
+
+
+.team-slot[draggable="true"] {
+    cursor: grab;
+}
+
+.team-slot[draggable="true"]:hover {
+    transform:
+        translateY(-4px) rotate(0deg);
+
+    box-shadow:
+        7px 12px 18px rgba(35, 25, 12, 0.38),
+        inset 0 0 18px rgba(100, 75, 20, 0.08);
+
+    z-index: 10;
+}
+
+.team-slot[draggable="true"]:active {
+    cursor: grabbing;
+
+    transform:
+        translateY(-10px) rotate(1deg);
+
+    box-shadow:
+        12px 20px 25px rgba(20, 15, 8, 0.45);
+}
+
+
+
+.team-slot p {
+    position: relative;
+
+    margin:
+        18px 0 30px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    word-break: break-word;
+
+    z-index: 2;
+}
+
+
+
+.team-slot button {
+    position: absolute;
+
+    left: 18px;
+    bottom: 14px;
+
+    padding:
+        3px 7px;
+
+    border: none;
+
+    border-bottom:
+        1px solid rgba(70, 48, 15, 0.55);
+
+    background: transparent;
+
+    color: #55421d;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    z-index: 3;
+}
+
+.team-slot button:hover {
+    color: #7c3aed;
+
+    border-bottom-color:
+        #7c3aed;
+}
+
+
+
+.team-slot:empty::before {
+    content:
+        "SPECIMEN\A— UNASSIGNED —";
+
+    white-space: pre;
+
+    display: block;
+
+    margin-top: 20px;
+
+    color:
+        rgba(70, 57, 30, 0.55);
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    letter-spacing: 2px;
+}
+
+
+
+
+.research-notes {
+    position: absolute;
+
+    top: 170px;
+    right: 45px;
+
+    width: 190px;
+
+    padding: 12px;
+
+    transform:
+        rotate(1.2deg);
+
+    color: #40372b;
+
+    font-size: 11px;
+
+    line-height: 1.55;
+}
+
+.research-notes p:first-child {
+    margin-top: 0;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    text-decoration: underline;
+
+    letter-spacing: 1px;
+}
+
+.research-notes p:nth-child(2) {
+    transform:
+        rotate(-1deg);
+}
+
+.research-notes p:nth-child(3) {
+    transform:
+        rotate(1.5deg);
+}
+
+.research-notes p:last-child {
+    margin-top: 15px;
+
+    color: #5b4630;
+
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+
+.pokemon-selection {
+    position: absolute;
+
+    left: 45px;
+    right: 45px;
+    bottom: 40px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid rgba(55, 44, 30, 0.4);
+}
+
+.pokemon-selection h2 {
+    margin:
+        0 0 12px;
+
+    font-size: 13px;
+    font-weight: normal;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+
+.pokemon-selection input {
+    width: 280px;
+
+    box-sizing: border-box;
+
+    padding:
+        10px 12px;
+
+    border:
+        1px solid rgba(65, 48, 28, 0.45);
+
+    border-radius: 0;
+
+    outline: none;
+
+    background:
+        rgba(238, 224, 188, 0.75);
+
+    color: #30291f;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    box-shadow:
+        inset 2px 2px 5px rgba(50, 35, 20, 0.12);
+}
+
+.pokemon-selection input::placeholder {
+    color: #756955;
+    opacity: 0.8;
+}
+
+.pokemon-selection input:focus {
+    border-color:
+        rgba(124, 58, 237, 0.7);
+
+    box-shadow:
+        0 0 0 2px rgba(124, 58, 237, 0.10),
+        inset 2px 2px 5px rgba(50, 35, 20, 0.12);
+}
+
+
+
+.pokemon-selection .flex {
+    display: flex;
+
+    flex-direction: column;
+
+    width: 280px;
+
+    margin-top: 3px;
+}
+
+.pokemon-selection .flex button {
+    padding:
+        7px 10px;
+
+    border:
+        1px solid rgba(65, 48, 28, 0.18);
+
+    border-top: none;
+
+    background:
+        rgba(225, 211, 175, 0.94);
+
+    color: #30291f;
+
+    text-align: left;
 
     font-family:
         "Courier New",
@@ -105,115 +614,57 @@
 
     font-size: 11px;
 
-    letter-spacing: 2px;
-
-    z-index: 2;
+    cursor: pointer;
 }
 
-.team-section {
-    position: relative;
-
-    margin-top: 35px;
-
-    z-index: 2;
-}
-
-.team-section h1 {
-    margin: 0 0 25px;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 22px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    transform: rotate(-1deg);
-}
-
-.team-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 28px;
-
-    width: 720px;
-}
-
-.team-slot {
-    position: relative;
-
-    height: 145px;
-
-    padding: 20px;
-
-    box-sizing: border-box;
-
+.pokemon-selection .flex button:hover {
     background:
-        linear-gradient(135deg,
-            #e6d65f,
-            #d8c64b);
+        rgba(0, 170, 255, 0.18);
 
-    box-shadow:
-        4px 7px 9px rgba(45, 33, 17, 0.28);
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 14px;
-
-    transform:
-        rotate(-2deg);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.team-slot:nth-child(2) {
-    transform: rotate(2deg);
-}
-
-.team-slot:nth-child(3) {
-    transform: rotate(-1deg);
-}
-
-.team-slot:nth-child(4) {
-    transform: rotate(3deg);
-}
-
-.team-slot:nth-child(5) {
-    transform: rotate(-3deg);
-}
-
-.team-slot:nth-child(6) {
-    transform: rotate(1deg);
+    color: #172a35;
 }
 
 
-.team-slot:hover {
-    transform:
-        rotate(0deg) translateY(-5px);
+@media (max-width: 900px) {
 
-    box-shadow:
-        7px 13px 14px rgba(45, 33, 17, 0.35);
+    .research-sheet {
+        width: 94vw;
+        height: 90vh;
+
+        padding: 30px;
+    }
+
+    .team-section {
+        width: 100%;
+    }
+
+    .research-notes {
+        display: none;
+    }
+
+    .team-grid {
+        grid-template-columns:
+            repeat(2, minmax(130px, 1fr));
+    }
 }
 
-.research-notes {
+.pokemon-selection {
     position: absolute;
 
-    right: 55px;
-    top: 170px;
+    left: 45px;
+    right: 45px;
+    bottom: 40px;
 
-    width: 250px;
+    padding-top: 20px;
 
-    z-index: 2;
+    border-top:
+        1px solid rgba(55, 44, 30, 0.4);
+
+    z-index: 5;
+}
+
+.pokemon-selection h2 {
+    margin: 0 0 12px;
 
     font-family:
         "Courier New",
@@ -221,50 +672,166 @@
 
     font-size: 13px;
 
-    line-height: 1.7;
+    font-weight: normal;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #40372b;
+}
+
+.selector-container {
+    position: relative;
+
+    width: 360px;
+}
+
+.selector-input-wrap {
+    position: relative;
+
+    width: 100%;
+}
+
+.pokemon-selection input {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 10px 12px;
+
+    border:
+        1px solid rgba(65, 48, 28, 0.45);
+
+    border-radius: 0;
+
+    outline: none;
+
+    background:
+        rgba(238, 224, 188, 0.75);
+
+    color: #30291f;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    box-shadow:
+        inset 2px 2px 5px rgba(50, 35, 20, 0.12);
+}
+
+.pokemon-selection input::placeholder {
+    color: #756955;
+
+    opacity: 0.8;
+}
+
+.pokemon-selection input:focus {
+    border-color:
+        rgba(80, 60, 30, 0.75);
+
+    box-shadow:
+        inset 2px 2px 5px rgba(50, 35, 20, 0.12);
+}
+
+.pokemon-results {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 100%;
+
+    z-index: 20;
+
+    display: flex;
+
+    flex-direction: column;
+
+    margin-bottom: 2px;
+
+    box-shadow:
+        3px 5px 8px rgba(45, 32, 15, 0.20);
+}
+
+.pokemon-results button {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 8px 10px;
+
+    border:
+        1px solid rgba(65, 48, 28, 0.18);
+
+    border-top: none;
+
+    background:
+        rgba(225, 211, 175, 0.97);
+
+    color: #30291f;
+
+    text-align: left;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+.pokemon-results button:hover {
+    background:
+        rgba(241, 217, 107, 0.92);
 
     transform:
-        rotate(2deg);
+        translateX(3px);
 }
 
-.research-notes p:first-child {
-    font-size: 18px;
+.result-action {
+    font-size: 9px;
 
-    font-weight: bold;
+    letter-spacing: 1px;
 
-    text-decoration:
-        underline;
+    opacity: 0.55;
 }
 
-@keyframes notebook-open {
+.selector-message {
+    margin: 7px 0 0;
 
-    0% {
-        opacity: 0;
+    font-family:
+        "Courier New",
+        monospace;
 
-        transform:
-            rotateY(-88deg) scale(0.82) translateX(-80px);
+    font-size: 10px;
 
-        filter:
-            blur(12px);
-    }
+    letter-spacing: 1px;
 
-    55% {
-        opacity: 1;
+    color: #5b4630;
 
-        transform:
-            rotateY(-12deg) scale(0.97) translateX(-10px);
+    transform:
+        rotate(-0.3deg);
+}
 
-        filter:
-            blur(2px);
-    }
+.empty-specimen {
+    display: block;
 
-    100% {
-        opacity: 1;
+    margin-top: 20px;
 
-        transform:
-            rotateY(0deg) scale(1) translateX(0);
+    color:
+        rgba(70, 57, 30, 0.55);
 
-        filter:
-            blur(0);
-    }
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    letter-spacing: 2px;
 }

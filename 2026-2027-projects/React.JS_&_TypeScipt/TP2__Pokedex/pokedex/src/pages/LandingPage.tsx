@@ -4,27 +4,6 @@ import "../style/landing.css";
 function LandingPage() {
     return (
         <main className="landing-room">
-
-            <header className="landing-header">
-                <div className="logo">
-                    <span className="logo-symbol">◉</span>
-                    <div>
-                        <strong>POKÉDEX</strong>
-                        <small>Knowledge. Preservation. For every journey.</small>
-                    </div>
-                </div>
-
-                <nav>
-                    <Link to="/pokedex">Pokédex</Link>
-                    <Link to="/team">Team</Link>
-                </nav>
-
-                <span className="system-status">
-                    ● System Online
-                </span>
-            </header>
-
-
             <section className="landing-intro">
                 <p>MORE THAN A</p>
                 <h1>POKÉDEX</h1>

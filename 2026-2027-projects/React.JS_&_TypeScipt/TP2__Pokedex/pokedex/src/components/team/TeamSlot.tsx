@@ -13,17 +13,23 @@ function TeamSlot({
     index,
     onMove,
 }: TeamSlotProps) {
+
     if (!pokemon) {
         return (
-            <div>
-                Empty
+            <div className="team-slot">
+                <span className="empty-specimen">
+                    SPECIMEN
+                    <br />
+                    — UNASSIGNED —
+                </span>
             </div>
         );
     }
 
     return (
         <div
-            draggable={!!pokemon}
+            className="team-slot"
+            draggable
             onDragStart={(event) => {
                 event.dataTransfer.setData(
                     "text/plain",
@@ -45,7 +51,9 @@ function TeamSlot({
         >
             <p>{pokemon.name}</p>
 
-            <button onClick={() => onRemove(pokemon.name)}>
+            <button
+                onClick={() => onRemove(pokemon.name)}
+            >
                 Remove
             </button>
         </div>

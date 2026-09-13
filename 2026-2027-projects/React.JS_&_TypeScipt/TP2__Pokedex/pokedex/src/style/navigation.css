@@ -1,0 +1,152 @@
+.site-header {
+    position: fixed;
+
+    top: 16px;
+    left: 16px;
+    right: 16px;
+
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    padding: 0 28px;
+
+    border: 1px solid rgba(124, 58, 237, 0.7);
+
+    background:
+        rgba(7, 4, 18, 0.92);
+
+    box-shadow:
+        0 0 30px rgba(124, 58, 237, 0.15);
+
+    z-index: 100;
+}
+
+.site-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    color: white;
+
+    text-decoration: none;
+}
+
+.logo-symbol {
+    font-size: 36px;
+
+    color: #00aaff;
+
+    line-height: 1;
+}
+
+.site-logo strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 24px;
+
+    letter-spacing: 5px;
+}
+
+.site-logo small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #a89bd0;
+
+    font-size: 11px;
+}
+
+.site-navigation {
+    display: flex;
+
+    gap: 42px;
+}
+
+.site-navigation a {
+    position: relative;
+
+    color: #dcd5ff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease;
+}
+
+.site-navigation a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: -8px;
+
+    height: 1px;
+
+    background: #00aaff;
+
+    transform: scaleX(0);
+
+    transform-origin: center;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.site-navigation a:hover {
+    color: #38d9ff;
+
+    text-shadow:
+        0 0 12px #00aaff;
+}
+
+.site-navigation a:hover::after {
+    transform: scaleX(1);
+}
+
+.system-status {
+    color: #38d9ff;
+
+    font-size: 13px;
+}
+
+.site-status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #38d9ff;
+
+    box-shadow:
+        0 0 9px #00aaff;
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        padding: 0 16px;
+    }
+
+    .site-logo-text small,
+    .site-status {
+        display: none;
+    }
+
+    .site-nav a {
+        padding: 9px 10px;
+    }
+}

@@ -17,10 +17,12 @@ function PokemonSelector() {
     const [message, setMessage] = useState("");
 
     const team = useTeamStore((state) => state.team);
-    const addPokemon = useTeamStore((state) => state.addPokemon);
+    const addPokemon = useTeamStore(
+        (state) => state.addPokemon
+    );
 
     useEffect(() => {
-        if (name.length < 4) {
+        if (name.length < 2) {
             setResults([]);
             return;
         }
@@ -31,38 +33,57 @@ function PokemonSelector() {
             );
 
             if (!response.ok) {
-                setMessage("Unable to search for Pokemon.");
+                setMessage(
+                    "Unable to search for Pokemon."
+                );
                 return;
             }
 
             const data: PokemonSearchResponse =
                 await response.json();
 
-            const filteredResults = data.results.filter((pokemon) =>
-                pokemon.name.includes(name.toLowerCase())
-            );
+            const filteredResults =
+                data.results.filter((pokemon) =>
+                    pokemon.name.includes(
+                        name.toLowerCase()
+                    )
+                );
 
-            setResults(filteredResults.slice(0, 10));
-        }, 300);
+            setResults(filteredResults.slice(0, 8));
+        }, 250);
 
         return () => clearTimeout(timeout);
     }, [name]);
 
-    const handleAdd = async (result: PokemonSearchResult) => {
+
+    const handleAdd = async (
+        result: PokemonSearchResult
+    ) => {
         if (team.length >= 6) {
-            setMessage("Team is full.");
+            setMessage(
+                "Team is full — six specimens maximum."
+            );
             return;
         }
 
-        if (team.some((member) => member.name === result.name)) {
-            setMessage("Pokemon is already on the team.");
+        if (
+            team.some(
+                (member) =>
+                    member.name === result.name
+            )
+        ) {
+            setMessage(
+                "Specimen already recorded."
+            );
             return;
         }
 
         const response = await fetch(result.url);
 
         if (!response.ok) {
-            setMessage("Unable to load Pokemon.");
+            setMessage(
+                "Unable to load specimen."
+            );
             return;
         }
 
@@ -78,12 +99,17 @@ function PokemonSelector() {
 
         setName("");
         setResults([]);
-        setMessage(`${pokemon.name} added.`);
+
+        setMessage(
+            `${pokemon.name} added to record.`
+        );
     };
 
+
     return (
-        <div>
-            <div>
+        <div className="selector-container">
+
+            <div className="selector-input-wrap">
                 <input
                     type="text"
                     value={name}
@@ -92,21 +118,37 @@ function PokemonSelector() {
                         setMessage("");
                     }}
                     placeholder="Search Pokemon"
+                    aria-label="Search Pokemon"
                 />
+
+                {results.length > 0 && (
+                    <div className="pokemon-results">
+                        {results.map((result) => (
+                            <button
+                                key={result.name}
+                                onClick={() =>
+                                    handleAdd(result)
+                                }
+                            >
+                                <span>
+                                    {result.name}
+                                </span>
+
+                                <span className="result-action">
+                                    RECORD →
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                )}
             </div>
 
-            <div className="flex flex-col">
-                {results.map((result) => (
-                    <button
-                        key={result.name}
-                        onClick={() => handleAdd(result)}
-                    >
-                        {result.name}
-                    </button>
-                ))}
-            </div>
+            {message && (
+                <p className="selector-message">
+                    {message}
+                </p>
+            )}
 
-            {message && <p>{message}</p>}
         </div>
     );
 }
