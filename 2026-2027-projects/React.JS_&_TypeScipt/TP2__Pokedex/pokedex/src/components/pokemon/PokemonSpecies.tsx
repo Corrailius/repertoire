@@ -1,5 +1,5 @@
 import type { PokemonDetails } from "../../types/PokemonDetails";
-import type { PokemonSpecies as PokemonSpeciesData } from "../../types/PokemonSpecies.type";
+import type { PokemonSpeciesType as PokemonSpeciesData } from "../../types/PokemonSpecies.type";
 
 type PokemonSpeciesProps = {
     pokemon: PokemonDetails;

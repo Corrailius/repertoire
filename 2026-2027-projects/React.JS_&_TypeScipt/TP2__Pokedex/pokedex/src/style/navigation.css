@@ -141,12 +141,12 @@
         padding: 0 16px;
     }
 
-    .site-logo-text small,
-    .site-status {
+    .site-logo small,
+    .system-status {
         display: none;
     }
 
-    .site-nav a {
+    .site-navigation a {
         padding: 9px 10px;
     }
 }

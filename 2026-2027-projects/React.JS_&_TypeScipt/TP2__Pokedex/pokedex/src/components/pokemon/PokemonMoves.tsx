@@ -131,10 +131,6 @@ function PokemonMoves({ pokemon }: PokemonMovesProps) {
                 </div>
             </div>
 
-            {selectedMove && (
-                <PokemonMoveDetails url={selectedMove} />
-            )}
-
         </section>
     );
 }

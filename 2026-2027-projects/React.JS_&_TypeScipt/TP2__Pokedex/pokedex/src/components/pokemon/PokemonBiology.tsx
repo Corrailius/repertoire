@@ -1,9 +1,9 @@
 import type { PokemonDetails } from "../../types/PokemonDetails";
-import type { PokemonSpecies } from "../../types/PokemonSpecies.type";
+import type { PokemonSpeciesType } from "../../types/PokemonSpecies.type";
 
 type PokemonBiologyProps = {
     pokemon: PokemonDetails;
-    species: PokemonSpecies;
+    species: PokemonSpeciesType;
 };
 
 function PokemonBiology({

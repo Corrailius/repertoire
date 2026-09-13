@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 
-import type { PokemonSpecies } from "../../types/PokemonSpecies.type";
+import type { PokemonSpeciesType } from "../../types/PokemonSpecies.type";
 
 type PokemonFormsProps = {
-    species: PokemonSpecies;
+    species: PokemonSpeciesType;
 };
 
 function PokemonForms({ species }: PokemonFormsProps) {
     return (
-        <section>
+        <section className="pokemon-forms">
             <h2>Forms</h2>
 
             {species.varieties.map((variety) => (

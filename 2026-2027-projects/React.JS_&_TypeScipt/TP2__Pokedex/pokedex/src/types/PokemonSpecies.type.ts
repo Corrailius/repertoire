@@ -1,5 +1,10 @@
 export type PokemonSpeciesType = {
-  genera: any;
+  genera: {
+    genus: string;
+    language: {
+      name: string;
+    };
+  }[];
   id: number;
   name: string;
   base_happiness: number | null;

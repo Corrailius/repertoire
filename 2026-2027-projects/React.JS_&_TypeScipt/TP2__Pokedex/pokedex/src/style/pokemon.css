@@ -478,11 +478,11 @@
    FORMS
    ========================================= */
 
-.pokemon-hud>section:last-child {
+.pokemon-forms {
     margin-top: 4px;
 }
 
-.pokemon-hud>section:last-child h2 {
+.pokemon-forms h2 {
     margin: 0 0 10px;
 
     color: #70687c;
@@ -492,11 +492,11 @@
     text-transform: uppercase;
 }
 
-.pokemon-hud>section:last-child p {
+.pokemon-forms p {
     margin: 0;
 }
 
-.pokemon-hud>section:last-child a {
+.pokemon-forms a {
     display: block;
 
     padding: 7px 10px;
@@ -517,7 +517,7 @@
         border-color 0.15s ease;
 }
 
-.pokemon-hud>section:last-child a:hover {
+.pokemon-forms a:hover {
     color: #ffffff;
 
     border-left-color:
@@ -884,7 +884,7 @@
 }
 
 /* Species name */
-.evolution-node>p {
+.evolution-species {
     position: relative;
 
     margin: 0 0 12px;
@@ -899,7 +899,7 @@
 }
 
 /* Small marker beside the species */
-.evolution-node>p::before {
+.evolution-species::before {
     content: "";
 
     position: absolute;
@@ -944,14 +944,23 @@
     font-weight: 600;
 }
 
+.evolution-arrow {
+    margin: 6px 0 10px;
+
+    color: #38d9ff;
+
+    font-size: 14px;
+    text-align: center;
+}
+
 /* Child evolutions */
-.evolution-node>.evolution-node {
+.evolution-branch>.evolution-node {
     margin-top: 18px;
     margin-left: 12px;
 }
 
 /* Multiple branches */
-.evolution-node>.evolution-node+.evolution-node {
+.evolution-node>.evolution-branch+.evolution-branch {
     margin-top: 20px;
 }
 
@@ -989,11 +998,6 @@
 
     .pokemon-hud {
         min-height: auto;
-    }
-
-    .pokemon-record {
-        height: 650px;
-        grid-template-columns: 1fr;
     }
 
     .pokemon-record {

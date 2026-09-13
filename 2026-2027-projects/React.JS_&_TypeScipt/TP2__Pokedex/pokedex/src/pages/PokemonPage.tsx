@@ -76,7 +76,6 @@ function PokemonPage() {
                 <div className="pokemon-hud-artwork">
                     <PokemonAppearance
                         pokemon={pokemon}
-                        species={species}
                     />
                 </div>
 
