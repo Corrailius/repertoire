@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import type { PokemonSpecies } from "../../types/PokemonSpecies";
+import type { PokemonSpecies } from "../../types/PokemonSpecies.type";
 
 type PokemonFormsProps = {
     species: PokemonSpecies;

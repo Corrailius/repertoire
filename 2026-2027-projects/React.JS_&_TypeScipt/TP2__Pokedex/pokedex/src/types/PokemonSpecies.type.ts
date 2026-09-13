@@ -1,4 +1,5 @@
-export type PokemonSpecies = {
+export type PokemonSpeciesType = {
+  genera: any;
   id: number;
   name: string;
   base_happiness: number | null;

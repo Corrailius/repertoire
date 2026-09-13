@@ -6,15 +6,27 @@ type PokemonAbilitiesProps = {
 
 function PokemonAbilities({ pokemon }: PokemonAbilitiesProps) {
     return (
-        <section>
+        <section className="pokemon-abilities">
             <h2>Abilities</h2>
 
-            {pokemon.abilities.map((ability) => (
-                <p key={ability.ability.name}>
-                    {ability.ability.name}
-                    {ability.is_hidden ? " (Hidden)" : ""}
-                </p>
-            ))}
+            <div className="ability-list">
+                {pokemon.abilities.map((ability) => (
+                    <div
+                        className="ability-record"
+                        key={ability.ability.name}
+                    >
+                        <div className="ability-header">
+                            <strong>
+                                {ability.ability.name}
+                            </strong>
+
+                            {ability.is_hidden && (
+                                <span>HIDDEN</span>
+                            )}
+                        </div>
+                    </div>
+                ))}
+            </div>
         </section>
     );
 }

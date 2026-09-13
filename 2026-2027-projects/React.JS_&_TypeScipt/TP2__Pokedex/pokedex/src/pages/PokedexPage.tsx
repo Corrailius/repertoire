@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PokemonCard from "../components/PokemonCard";
 import type { Pokemon } from "../types/Pokemon";
+import "../style/pokedex.css";
 
 type PokemonApiResult = {
     name: string;
@@ -41,16 +42,36 @@ function PokedexPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-black">
-            <div className="mx-auto grid max-w-[1200px] grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6">
+        <main className="pokedex-page">
+
+            <header className="pokedex-header">
+                <div>
+                    <h1>Pokédex</h1>
+                    <p>FIELD DATABASE // SPECIMEN REGISTRY</p>
+                </div>
+
+                <span>
+                    {pokemons.length} SPECIMENS
+                </span>
+            </header>
+
+            <section className="pokedex-controls">
+                <input
+                    type="search"
+                    placeholder="Search Pokémon..."
+                />
+            </section>
+
+            <section className="pokemon-grid">
                 {pokemons.map((pokemon) => (
                     <PokemonCard
                         key={pokemon.name}
                         pokemon={pokemon}
                     />
                 ))}
-            </div>
-        </div>
+            </section>
+
+        </main>
     );
 }
 

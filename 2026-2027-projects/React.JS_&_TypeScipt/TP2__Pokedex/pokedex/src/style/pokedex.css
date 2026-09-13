@@ -1,0 +1,363 @@
+.pokedex-page {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 0;
+
+    box-sizing: border-box;
+    padding: 110px 32px 40px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    color: #eeeaff;
+    font-family:
+        Inter,
+        system-ui,
+        sans-serif;
+
+    background:
+        linear-gradient(30deg,
+            transparent 24%,
+            rgba(92, 27, 51, 0.55) 25%,
+            rgba(92, 27, 51, 0.55) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(92, 27, 51, 0.55) 75%,
+            rgba(92, 27, 51, 0.55) 76%,
+            transparent 77%),
+        linear-gradient(150deg,
+            transparent 24%,
+            rgba(92, 27, 51, 0.55) 25%,
+            rgba(92, 27, 51, 0.55) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(92, 27, 51, 0.55) 75%,
+            rgba(92, 27, 51, 0.55) 76%,
+            transparent 77%),
+        linear-gradient(90deg,
+            rgba(34, 20, 52, 0.98),
+            rgba(13, 25, 48, 0.98));
+
+    background-size:
+        56px 96px,
+        56px 96px,
+        auto;
+
+    background-position:
+        0 0,
+        28px 48px,
+        0 0;
+
+    overflow-x: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: #7c3aed rgba(10, 8, 20, 0.85);
+}
+
+
+/* =========================================
+   PAGE HEADER
+   ========================================= */
+
+.pokedex-header {
+    max-width: 1500px;
+    margin: 0 auto 24px;
+
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    padding-bottom: 16px;
+
+    border-bottom:
+        2px solid #5c1b33;
+}
+
+.pokedex-header h1 {
+    margin: 0;
+
+    font-size: 30px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.pokedex-header p {
+    margin: 5px 0 0;
+
+    color: #a99dbd;
+
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   SEARCH / CONTROLS
+   ========================================= */
+
+.pokedex-controls {
+    max-width: 1500px;
+    margin: 0 auto 18px;
+
+    display: flex;
+    gap: 10px;
+}
+
+.pokedex-controls input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 12px 16px;
+
+    border:
+        1px solid rgba(139, 48, 77, 0.7);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background:
+        rgba(10, 8, 20, 0.82);
+
+    color: #eeeaff;
+
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.pokedex-controls input::placeholder {
+    color: #766d82;
+}
+
+.pokedex-controls input:focus {
+    border-color: #00aaff;
+
+    box-shadow:
+        0 0 0 2px rgba(0, 170, 255, 0.12);
+}
+
+
+/* =========================================
+   POKEMON GRID
+   ========================================= */
+
+.pokemon-grid {
+    max-width: 1500px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(10, minmax(0, 1fr));
+
+    gap: 10px;
+}
+
+
+/* =========================================
+   POKEMON CARD
+   ========================================= */
+
+.pokemon-card {
+    position: relative;
+
+    min-width: 0;
+    aspect-ratio: 0.82;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(139, 48, 77, 0.65);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(42, 28, 63, 0.96),
+            rgba(14, 19, 38, 0.96));
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.28);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.16s ease,
+        border-color 0.16s ease,
+        box-shadow 0.16s ease;
+}
+
+.pokemon-card:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(56, 217, 255, 0.8);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.4),
+        0 0 12px rgba(0, 170, 255, 0.12);
+}
+
+
+/* =========================================
+   CARD NUMBER
+   ========================================= */
+
+.pokemon-card-number {
+    color: #998ba8;
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   ARTWORK
+   ========================================= */
+
+.pokemon-card-artwork {
+    flex: 1;
+
+    min-height: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokemon-card-artwork img {
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 8px 8px rgba(0, 0, 0, 0.35));
+
+    transition:
+        transform 0.16s ease;
+}
+
+.pokemon-card:hover .pokemon-card-artwork img {
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================
+   CARD INFORMATION
+   ========================================= */
+
+.pokemon-card-name {
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pokemon-card-type {
+    margin-top: 4px;
+
+    color: #8bdcff;
+
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.pokemon-card-link {
+    display: block;
+    min-width: 0;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================================
+   POKÉDEX SCROLLBAR
+   ========================================= */
+
+.pokedex-page::-webkit-scrollbar {
+    width: 10px;
+}
+
+.pokedex-page::-webkit-scrollbar-track {
+    background:
+        rgba(10, 8, 20, 0.85);
+
+    border-left:
+        1px solid rgba(92, 27, 51, 0.5);
+}
+
+.pokedex-page::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(180deg,
+            #5c1b33,
+            #7c3aed);
+
+    border-radius: 10px;
+
+    border:
+        2px solid rgba(10, 8, 20, 0.85);
+}
+
+.pokedex-page::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(180deg,
+            #8f3154,
+            #38d9ff);
+}
+
+
+/* =========================================
+   RESPONSIVE GRID
+   ========================================= */
+
+@media (max-width: 1400px) {
+    .pokemon-grid {
+        grid-template-columns:
+            repeat(8, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1100px) {
+    .pokemon-grid {
+        grid-template-columns:
+            repeat(6, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    .pokemon-grid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .pokemon-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}

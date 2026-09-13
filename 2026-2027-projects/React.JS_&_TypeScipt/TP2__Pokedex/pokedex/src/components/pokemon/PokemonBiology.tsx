@@ -1,5 +1,5 @@
 import type { PokemonDetails } from "../../types/PokemonDetails";
-import type { PokemonSpecies } from "../../types/PokemonSpecies";
+import type { PokemonSpecies } from "../../types/PokemonSpecies.type";
 
 type PokemonBiologyProps = {
     pokemon: PokemonDetails;
@@ -10,20 +10,56 @@ function PokemonBiology({
     pokemon,
     species,
 }: PokemonBiologyProps) {
+
     return (
-        <section>
+        <section className="pokemon-biology">
+
             <h2>Biology</h2>
 
-            <p>Height: {pokemon.height}</p>
+            <div className="biology-section">
 
-            <p>Weight: {pokemon.weight}</p>
+                <h3>Physical Profile</h3>
 
-            <p>
-                Egg groups:{" "}
-                {species.egg_groups
-                    .map((group) => group.name)
-                    .join(", ")}
-            </p>
+                <div className="biology-profile">
+
+                    <div className="biology-measurement">
+                        <span>Height</span>
+                        <strong>
+                            {(pokemon.height / 10).toFixed(1)} m
+                        </strong>
+                    </div>
+
+                    <div className="biology-measurement">
+                        <span>Weight</span>
+                        <strong>
+                            {(pokemon.weight / 10).toFixed(1)} kg
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div className="biology-section">
+
+                <h3>Classification</h3>
+
+                <div className="biology-classification">
+
+                    <span className="biology-label">
+                        Egg groups
+                    </span>
+
+                    <span className="biology-value">
+                        {species.egg_groups
+                            .map((group) => group.name)
+                            .join(" · ")}
+                    </span>
+
+                </div>
+
+            </div>
+
         </section>
     );
 }

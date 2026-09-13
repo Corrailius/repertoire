@@ -1,89 +1,140 @@
 import type { PokemonDetails } from "../../types/PokemonDetails";
+import PokemonMoveDetails from "./PokemonMoveDetails";
+import { useState } from "react";
 
 type PokemonMovesProps = {
     pokemon: PokemonDetails;
 };
 
 function PokemonMoves({ pokemon }: PokemonMovesProps) {
+
+    const [selectedMove, setSelectedMove] = useState<string | null>(null);
+
+    const levelUpMoves = pokemon.moves.filter((move) =>
+        move.version_group_details.some(
+            (detail) =>
+                detail.move_learn_method.name === "level-up"
+        )
+    );
+
+    const machineMoves = pokemon.moves.filter((move) =>
+        move.version_group_details.some(
+            (detail) =>
+                detail.move_learn_method.name === "machine"
+        )
+    );
+
+    const eggMoves = pokemon.moves.filter((move) =>
+        move.version_group_details.some(
+            (detail) =>
+                detail.move_learn_method.name === "egg"
+        )
+    );
+
+    const tutorMoves = pokemon.moves.filter((move) =>
+        move.version_group_details.some(
+            (detail) =>
+                detail.move_learn_method.name === "tutor"
+        )
+    );
+
     return (
-        <section>
+        <section className="pokemon-moves">
             <h2>Moves</h2>
 
-            <h3>Level Up</h3>
+            {selectedMove && (
+                <PokemonMoveDetails url={selectedMove} />
+            )}
 
-            {pokemon.moves.map((move) => {
-                const levelUpMoves = move.version_group_details.filter(
-                    (detail) =>
-                        detail.move_learn_method.name === "level-up"
-                );
+            <div className="move-section">
+                <h3>Level Up</h3>
 
-                if (levelUpMoves.length === 0) return null;
+                <div className="move-list">
+                    {levelUpMoves.map((move) => {
 
-                return (
-                    <div key={move.move.name}>
-                        <p>{move.move.name}</p>
+                        const detail =
+                            move.version_group_details.find(
+                                (detail) =>
+                                    detail.move_learn_method.name === "level-up"
+                            );
 
-                        {levelUpMoves.map((detail) => (
-                            <p key={detail.version_group.name}>
-                                Level {detail.level_learned_at}
-                                {" — "}
-                                {detail.version_group.name}
-                            </p>
-                        ))}
-                    </div>
-                );
-            })}
+                        return (
+                            <button
+                                className="move-record"
+                                key={move.move.name}
+                                onClick={() => setSelectedMove(move.move.url)}
+                            >
+                                <strong>
+                                    {move.move.name}
+                                </strong>
 
-            <h3>TM / Machine</h3>
+                                <span>
+                                    Lv. {detail?.level_learned_at}
+                                </span>
+                            </button>
+                        );
+                    })}
+                </div>
+            </div>
 
-            {pokemon.moves.map((move) => {
-                const machine = move.version_group_details.find(
-                    (detail) =>
-                        detail.move_learn_method.name === "machine"
-                );
+            <div className="move-section">
+                <h3>TM / Machine</h3>
 
-                if (!machine) return null;
+                <div className="move-list">
+                    {machineMoves.map((move) => (
+                        <button
+                            className="move-record"
+                            key={move.move.name}
+                            onClick={() => setSelectedMove(move.move.url)}
+                        >
+                            <strong>
+                                {move.move.name}
+                            </strong>
+                        </button>
+                    ))}
+                </div>
+            </div>
 
-                return (
-                    <p key={move.move.name}>
-                        {move.move.name}
-                    </p>
-                );
-            })}
+            <div className="move-section">
+                <h3>Egg</h3>
 
-            <h3>Egg</h3>
+                <div className="move-list">
+                    {eggMoves.map((move) => (
+                        <button
+                            className="move-record"
+                            key={move.move.name}
+                            onClick={() => setSelectedMove(move.move.url)}
+                        >
+                            <strong>
+                                {move.move.name}
+                            </strong>
+                        </button>
+                    ))}
+                </div>
+            </div>
 
-            {pokemon.moves.map((move) => {
-                const egg = move.version_group_details.find(
-                    (detail) =>
-                        detail.move_learn_method.name === "egg"
-                );
+            <div className="move-section">
+                <h3>Tutor</h3>
 
-                if (!egg) return null;
+                <div className="move-list">
+                    {tutorMoves.map((move) => (
+                        <button
+                            className="move-record"
+                            key={move.move.name}
+                            onClick={() => setSelectedMove(move.move.url)}
+                        >
+                            <strong>
+                                {move.move.name}
+                            </strong>
+                        </button>
+                    ))}
+                </div>
+            </div>
 
-                return (
-                    <p key={move.move.name}>
-                        {move.move.name}
-                    </p>
-                );
-            })}
+            {selectedMove && (
+                <PokemonMoveDetails url={selectedMove} />
+            )}
 
-            <h3>Tutor</h3>
-
-            {pokemon.moves.map((move) => {
-                const tutor = move.version_group_details.find(
-                    (detail) =>
-                        detail.move_learn_method.name === "tutor"
-                );
-
-                if (!tutor) return null;
-
-                return (
-                    <p key={move.move.name}>
-                        {move.move.name}
-                    </p>
-                );
-            })}
         </section>
     );
 }

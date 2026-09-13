@@ -9,95 +9,94 @@ type PokemonEvolutionProps = {
 
 function PokemonEvolution({ evolution }: PokemonEvolutionProps) {
 
+    function getEvolutionCondition(node: EvolutionNode) {
+        const detail = node.evolution_details[0];
+
+        if (!detail) {
+            return "—";
+        }
+
+        if (detail.min_level !== null) {
+            return `Level ${detail.min_level}`;
+        }
+
+        if (detail.item) {
+            return detail.item.name;
+        }
+
+        if (detail.held_item) {
+            return `Hold ${detail.held_item.name}`;
+        }
+
+        if (detail.min_happiness !== null) {
+            return `Friendship ${detail.min_happiness}`;
+        }
+
+        if (detail.min_beauty !== null) {
+            return `Beauty ${detail.min_beauty}`;
+        }
+
+        if (detail.min_affection !== null) {
+            return `Affection ${detail.min_affection}`;
+        }
+
+        if (detail.time_of_day) {
+            return detail.time_of_day;
+        }
+
+        if (detail.known_move) {
+            return `Know ${detail.known_move.name}`;
+        }
+
+        if (detail.known_move_type) {
+            return `Know ${detail.known_move_type.name}`;
+        }
+
+        if (detail.location) {
+            return detail.location.name;
+        }
+
+        return detail.trigger.name;
+    }
+
     function renderEvolutionChain(node: EvolutionNode) {
         return (
-            <div key={node.species.name}>
-                <p>{node.species.name}</p>
+            <div className="evolution-node" key={node.species.name}>
+
+                <div className="evolution-species">
+                    <strong>{node.species.name}</strong>
+                </div>
 
                 {node.evolves_to.map((next) => (
-                    <div key={next.species.name}>
-                        {next.evolution_details.map((detail, index) => (
-                            <div key={index}>
-                                {detail.min_level !== null && (
-                                    <p>
-                                        Level: {detail.min_level}
-                                    </p>
-                                )}
+                    <div
+                        className="evolution-branch"
+                        key={next.species.name}
+                    >
+                        <div className="evolution-condition">
+                            {getEvolutionCondition(next)}
+                        </div>
 
-                                {detail.item && (
-                                    <p>
-                                        Item: {detail.item.name}
-                                    </p>
-                                )}
-
-                                {detail.held_item && (
-                                    <p>
-                                        Held item: {detail.held_item.name}
-                                    </p>
-                                )}
-
-                                {detail.min_happiness !== null && (
-                                    <p>
-                                        Friendship: {detail.min_happiness}
-                                    </p>
-                                )}
-
-                                {detail.min_beauty !== null && (
-                                    <p>
-                                        Beauty: {detail.min_beauty}
-                                    </p>
-                                )}
-
-                                {detail.min_affection !== null && (
-                                    <p>
-                                        Affection: {detail.min_affection}
-                                    </p>
-                                )}
-
-                                {detail.time_of_day && (
-                                    <p>
-                                        Time: {detail.time_of_day}
-                                    </p>
-                                )}
-
-                                {detail.known_move && (
-                                    <p>
-                                        Known move: {detail.known_move.name}
-                                    </p>
-                                )}
-
-                                {detail.known_move_type && (
-                                    <p>
-                                        Known move type: {detail.known_move_type.name}
-                                    </p>
-                                )}
-
-                                {detail.location && (
-                                    <p>
-                                        Location: {detail.location.name}
-                                    </p>
-                                )}
-
-                                {detail.trigger.name && (
-                                    <p>
-                                        Trigger: {detail.trigger.name}
-                                    </p>
-                                )}
-                            </div>
-                        ))}
+                        <div className="evolution-arrow">
+                            ↓
+                        </div>
 
                         {renderEvolutionChain(next)}
                     </div>
                 ))}
+
             </div>
         );
     }
 
     return (
-        <section>
+        <section className="pokemon-evolution">
+
             <h2>Evolution</h2>
 
-            {renderEvolutionChain(evolution.chain)}
+            <div className="evolution-chain">
+                {renderEvolutionChain(evolution.chain)}
+            </div>
+
         </section>
     );
 }
