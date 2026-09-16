@@ -1,203 +1,209 @@
-# Registre FICSIT — le front
+# ACCORD DE LICENCE PIONNIER
+### Registre de Production FICSIT™ — module logiciel non-officiel, édition « B2 · React & TypeScript »
 
-Le TP **Formulaires et gestion d'état** (B2 · React & TypeScript).
+*« Construct. Automate. Explore & Exploit. »* — devise déposée de FICSIT Inc.
 
-Le projet est monté, câblé, et vide. Vous écrivez les formulaires et les stores.
+**EN CLONANT, EN INSTALLANT, EN EXÉCUTANT `npm run dev`, OU EN LISANT SIMPLEMENT CES LIGNES JUSQU'AU BOUT, VOUS (CI-APRÈS « LE PIONNIER ») RECONNAISSEZ AVOIR PRIS CONNAISSANCE DE L'INTÉGRALITÉ DU PRÉSENT ACCORD — CE QUE PERSONNE NE FAIT JAMAIS — ET ACCEPTEZ D'Y ÊTRE LIÉ, SANS RÉSERVE, ET SANS ASSISTANCE JURIDIQUE, LAQUELLE N'EST DE TOUTE FAÇON PAS COUVERTE PAR VOTRE CONTRAT.**
 
-## Démarrer
+---
 
-**1. L'API, dans son propre dépôt.** Elle est livrée finie, vous n'y touchez pas.
-Vous la clonez une fois, vous la lancez, et vous la laissez tourner dans son coin.
+## Préambule
+
+ATTENDU QUE FICSIT Inc. étend ses opérations vers la planète MASSAGE-2(A-B)b, système binaire d'Akycha, dans le cadre du programme *Project Assembly* ;
+
+ATTENDU QU'il devient nécessaire de tracer, d'assigner et de livrer les Commandes de Production sans recourir à un tableur partagé, une pratique que la Direction juge « incompatible avec la vision FICSIT » ;
+
+ATTENDU QUE le Pionnier a librement souscrit à un contrat d'engagement dont les clauses exactes demeurent, comme il se doit, volontairement floues ;
+
+ATTENDU QUE toute ressemblance avec un TP noté du module *Formulaires et gestion d'état* (B2 · Ynov) est **strictement contractuelle** et ne saurait engager la responsabilité de qui que ce soit ;
+
+IL EST CONVENU CE QUI SUIT.
+
+---
+
+## Article 1 — Définitions
+
+| Terme du présent Accord | Signifie, en langage de sous-traitant |
+| --- | --- |
+| **le Registre** | l'application web objet du présent dépôt (React 19, TypeScript, Tailwind CSS v4, Zustand, react-hook-form, axios) |
+| **le Pionnier** | vous. Toute personne exécutant le code, y compris par accident |
+| **ADA** | l'intelligence embarquée qui, dans l'univers FICSIT, vous parle constamment. Ici, elle a été remplacée par des messages `toast` |
+| **une Commande de Production** | l'unité de travail du Registre : titre, description, Palier, récompense, Ressources requises |
+| **le Tableau** | la liste des Commandes que personne n'a encore prises en charge (`GET /tasks?scope=board`) |
+| **la Passerelle d'Authentification** | les écrans `/connexion` et `/inscription`, hérités d'un accord antérieur (voir Article 5) |
+| **le Jeton** | ce qui prouve au serveur que le Pionnier a le droit d'entrer. Ne prouve rien sur son identité |
+
+---
+
+## Article 2 — Objet de l'Accord
+
+Le Registre permet au Pionnier de :
+
+1. Consulter **le Tableau** — les Commandes libres, filtrables par Palier et par titre ;
+2. **Prendre en charge** une Commande — elle quitte le Tableau et rejoint « Mes commandes » ;
+3. **Livrer** une Commande prise en charge — elle rejoint le Registre de Production et déclenche le versement des Crédits FICSIT ;
+4. **Soumettre** une nouvelle Commande, laquelle rejoint le Tableau à son tour.
+
+FICSIT Inc. rappelle que ce cycle constitue l'intégralité de la proposition de valeur. Toute attente supplémentaire relève de l'optimisme du Pionnier, non d'une clause de ce contrat.
+
+---
+
+## Article 3 — Conditions préalables à l'engagement
+
+Le Pionnier certifie disposer, avant toute exécution :
+
+- **3.1.** Node.js 18 ou supérieur, ainsi que npm ;
+- **3.2.** Un terminal, de préférence deux ouverts simultanément (voir Article 4) ;
+- **3.3.** L'API fournie séparément, laquelle est livrée finie et ne fait l'objet d'aucune modification autorisée en vertu du présent Accord ;
+- **3.4.** Une tolérance raisonnable à la couleur ambre.
+
+Le non-respect de l'Article 3.1 engage la seule responsabilité du Pionnier, y compris moralement.
+
+---
+
+## Article 4 — Procédure d'intégration (« Onboarding »)
+
+**4.1. L'API, dans son propre dépôt.** Elle est livrée finie ; le Pionnier ne la modifie pas, ne la questionne pas, et la laisse tourner dans son coin, tel un système hérité que personne n'ose éteindre.
 
 ```bash
-git clone <url-du-depot-api> carnet-de-quetes-api
-cd carnet-de-quetes-api
+git clone <url-du-depot-api> registre-ficsit-api
+cd registre-ficsit-api
 npm install
 npm run setup      # génère le client Prisma, crée la base, la remplit
 npm run dev        # http://localhost:4000
 ```
 
-Vérifiez qu'elle répond : <http://localhost:4000/health> doit afficher
-`{"ok":true}`. Laissez ce terminal ouvert.
+Le Pionnier vérifie que l'API répond : <http://localhost:4000/health> doit afficher `{"ok":true}`. Ce terminal reste ouvert pour la durée de l'engagement.
 
-**2. Votre fichier `.env`.** Il n'est pas dans le dépôt — chacun crée le sien,
-à la racine de ce projet-ci :
+**4.2. Le fichier `.env`, propre à chaque Pionnier.** Il n'est pas versionné — chacun établit le sien, à la racine du présent projet :
 
 ```bash
 cp .env.example .env
 ```
 
-Une seule variable, `VITE_API_URL=http://localhost:4000`. Vite n'expose au
-navigateur que ce qui commence par `VITE_`, et il ne relit le fichier qu'au
-démarrage : **toute modification du `.env` demande de relancer `npm run dev`**.
+Une seule variable, `VITE_API_URL=http://localhost:4000`. Vite n'expose au navigateur que ce qui commence par `VITE_`, et ne relit ce fichier qu'au démarrage : **toute modification exige un redémarrage de `npm run dev`**, sans exception, sans recours.
 
-**3. Le front**, dans un second terminal :
+**4.3. Le Registre lui-même**, dans un second terminal :
 
 ```bash
 npm install
-npm install react-hook-form axios
 npm run dev        # http://localhost:5173
 ```
 
-Deux processus, deux ports, deux terminaux : c'est la situation normale d'une
-application web. Le front ne sert que des fichiers, l'API ne sert que des données.
+Deux processus, deux ports, deux terminaux : FICSIT Inc. confirme qu'il s'agit là d'une situation normale, et non d'un dysfonctionnement du poste de travail.
 
-## Ce qui est déjà là
+---
 
-| | |
-| --- | --- |
-| Vite, React 19, TypeScript | configurés, `npm run dev` marche tout de suite |
-| Tailwind CSS | v4, via `@tailwindcss/vite`. Une ligne dans `index.css`, rien d'autre |
-| React Router | les cinq routes sont déclarées dans `App.tsx` |
-| Zustand | installé, aucun store écrit |
-| `src/types/order.type.ts` | `OrderType`, les paliers et leurs libellés |
-| `Layout.component.tsx` | l'en-tête et la navigation |
-| L'alias `@/` | `@/lib/http` plutôt que `../../lib/http` |
+## Article 5 — Anomalie connue concernant la Passerelle d'Authentification
 
-**`react-hook-form` et `axios` ne sont pas installés.** C'est votre premier
-`npm install`. Le client HTTP non plus n'existe pas : vous l'écrivez, il fait
-trois lignes.
+Le Pionnier pourra constater que les écrans `/connexion` et `/inscription` font encore référence à une entité tierce désignée « la Guilde », ainsi qu'à la notion d'« aventurier ». Cette terminologie est **antérieure** à la présente réorganisation et provient d'un accord de fusion resté, à ce jour, non finalisé.
 
-## Ce que vous écrivez
+FICSIT Inc. ne confirme ni n'infirme l'existence de ladite Guilde. Le Jeton qu'elle délivre reste néanmoins pleinement valide sur toutes les routes `/tasks` du Registre : le Pionnier est donc invité à s'y connecter sans poser de question, dans la plus pure tradition FICSIT.
 
-**Les stores**, dans `src/stores/`, à créer. **Un dossier par domaine, trois
-fichiers dedans**, comme dans une vraie application :
+---
 
-```
-src/lib/http.ts                 l'instance axios : baseURL, et le token plus tard
-src/stores/auth/auth.api.ts     registerApi, loginApi : les appels, rien d'autre
-src/stores/auth/auth.store.ts   le token, l'aventurier connecté, login/register/logout
-src/stores/auth/auth.type.ts    UserType, AuthResponseType, AuthState
-src/stores/order/…               les trois mêmes, pour les commandes
-```
+## Article 6 — Cycle de vie d'une Commande
 
-`api` appelle · `store` retient · `type` décrit. Aucun composant n'importe
-axios : il appelle le store, qui appelle l'`api`.
+Une Commande n'a pas d'état booléen. Son état se déduit de deux champs, conformément au schéma renvoyé par l'API :
 
-**Les formulaires**, par difficulté croissante.
-
-| Page | Ce qu'on y découvre |
-| --- | --- |
-| `/connexion` | `useForm`, `register`, `handleSubmit`, `formState` |
-| `/inscription` | les règles de validation, la confirmation, le 409 |
-| `/commandes/nouvelle` | `Controller` sur le palier, `useFieldArray` sur les ressources |
-
-Une commande a cinq champs : titre, description, palier, **récompense** en
-crédits FICSIT, ressources. Attention à la récompense : un input rend une chaîne, il
-faut `valueAsNumber: true` dans le `register`, sinon l'API répond 400.
-
-**Les trois écrans du registre.** Ce sont trois lectures de la même table,
-via `GET /tasks?scope=`. Un seul store, une seule fonction d'appel.
-
-| Écran | `scope` | Ce qu'on y fait |
+| `claimedBy` | `completedAt` | État observable |
 | --- | --- | --- |
-| Le tableau | `board` | les commandes que personne n'a prises. On en **prend une en charge** |
-| Mes commandes | `mine` | celles qu'on a prises en charge. On les **livre** |
-| Le registre | `history` | celles qu'on a livrées, et le **total en crédits FICSIT** |
+| `null` | `null` | au Tableau, libre |
+| rempli | `null` | en cours, chez son Pionnier |
+| rempli | rempli | livrée, au Registre |
 
-Prendre en charge et livrer ne sont pas des `PATCH` : ce sont `POST /tasks/:id/claim`
-et `POST /tasks/:id/complete`, sans corps.
+| Écran | `scope` | Action disponible |
+| --- | --- | --- |
+| Le tableau (`/tableau`) | `board` | **Prendre en charge** — `POST /tasks/:id/claim`, sans corps |
+| Mes commandes (`/`) | `mine` | **Livrer** — `POST /tasks/:id/complete`, sans corps |
+| Le registre (`/historique`) | `history` | consultation seule, total en Crédits FICSIT inclus |
 
-**Les filtres**, cumulables avec n'importe quel écran : palier, et
-recherche par titre. Aucune valeur calculable ne se range dans un state, le
-total du registre compris.
+**6.1.** Si un autre Pionnier prend en charge la Commande en même temps que vous, le serveur répond `409`. FICSIT Inc. considère ceci comme une preuve de la vigueur de la concurrence interne, et non comme un défaut du Registre.
 
-**La route protégée**, sans token, `/` renvoie sur `/connexion`.
+---
 
-## Rester connecté
+## Article 7 — Rémunération (Crédits FICSIT)
 
-Les deux premiers points ne sont pas optionnels : sans eux, aucune route
-`/tasks` ne vous répondra.
+Toute Commande porte une récompense, exprimée en Crédits FICSIT, dont la valeur légale et l'usage réel restent à la discrétion de la Direction. Le champ correspondant du formulaire (`/commandes/nouvelle`) exige `valueAsNumber: true` dans le `register` : un `<input type="number">` renvoie une chaîne de caractères par défaut, et le serveur rejette toute chaîne avec un code `400`, sans commentaire.
 
-**1. Le token dans le `localStorage`.** À la connexion et à l'inscription vous
-l'écrivez, à la déconnexion vous l'effacez. Deux lignes dans le store.
+Bornes contractuelles : un Crédit FICSIT au minimum, mille au maximum. FICSIT Inc. rappelle qu'aucune de ces sommes n'est indexée sur quoi que ce soit.
 
-**2. L'intercepteur, dans `lib/http.ts`.** Il pose le token sur chaque requête
-sortante, une fois pour toutes :
+---
 
-```ts
-httpClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem("registre-ficsit-token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
-```
+## Article 8 — Ressources requises
 
-Sans lui, il faudrait recopier l'en-tête dans chacune de vos fonctions d'appel.
+Chaque Commande peut lister jusqu'à **cinq** Ressources requises, de **seize caractères** chacune — limites fixées unilatéralement par le serveur et non négociables par le présent Accord. Techniquement, cette liste repose sur `useFieldArray` : chaque ligne possède un `field.id` stable, lequel sert de `key` React. L'index de la ligne, lui, ne sert jamais de `key` : retirer une Ressource décalerait les suivantes, et React réutiliserait le mauvais champ — un vice caché que FICSIT Inc. ne saurait couvrir.
 
-**3. Bonus : survivre au F5.** Un token dans le `localStorage` ne suffit pas.
-Au rechargement vous savez que vous avez un token, mais pas **qui** vous êtes :
-l'utilisateur, lui, n'est pas stocké. C'est à ça que sert `GET /auth/me`.
-Appelez-la une fois au démarrage si un token existe, et remplissez le store
-avec ce qu'elle renvoie.
+---
 
-Ce bonus cache un piège, et c'est tout son intérêt. Pendant que `/auth/me` est
-en vol, `user` vaut encore `null` : votre route protégée vous renvoie donc sur
-`/connexion` avant même que la réponse arrive. Il faut un troisième état.
+## Article 9 — Paliers de Production
 
-```
-user = null,  isCheckingAuth = true    je ne sais pas encore  →  n'affichez rien
-user = null,  isCheckingAuth = false   pas de session         →  /connexion
-user = { … }                            connecté               →  la page
-```
+En lieu et place d'une « difficulté », chaque Commande est classée selon la machine qu'elle mobilise, par complexité croissante :
 
-« Je n'ai pas de session » et « je ne sais pas encore si j'en ai une » sont deux
-choses différentes. Les confondre est le bug le plus courant de tout écran
-d'authentification.
+| Palier | Machine de référence | Code interne (non modifiable) |
+| --- | --- | --- |
+| Extracteur | extraction brute | `EASY` |
+| Constructeur | une entrée, une sortie | `NORMAL` |
+| Assembleur | deux entrées | `HARD` |
+| Manufacturier | jusqu'à quatre entrées | `EPIC` |
 
-**Pourquoi pas un cookie ?** Un cookie posé en JavaScript n'est pas plus sûr
-qu'un `localStorage` : même exposition au XSS. Le cookie qui protège vraiment
-est le `httpOnly`, posé par le serveur, et il demande de modifier l'API et sa
-configuration CORS. Ce n'est pas le sujet de cette séance.
+Le Pionnier notera que ces quatre valeurs (`EASY`, `NORMAL`, `HARD`, `EPIC`) circulent telles quelles jusqu'au serveur. Seul leur habillage a été renégocié dans le cadre du présent Accord ; leur dénomination technique reste la propriété exclusive de l'API et ne fait l'objet d'aucune concession.
 
-## Les deux règles du sujet
+---
 
-**Un champ de formulaire n'est jamais dans un store.** `email`, `password`,
-`title`, `tags` : react-hook-form les tient, personne d'autre. Le store ne
-reçoit que ce qui survit à la page — le token, l'utilisateur, les commandes.
+## Article 10 — Garanties, exclusions et responsabilité
 
-**Le serveur a le dernier mot.** Vos règles côté client évitent un aller-retour
-inutile, elles ne remplacent pas celles du serveur. Quand il répond quand même
-une erreur, elle doit s'afficher **sur le bon champ** :
+**10.1.** Le Registre est fourni « en l'état », sans garantie d'aucune sorte, y compris de qualité marchande, d'adéquation à un objectif particulier, ou de résistance à un double clic. C'est précisément pour cette dernière raison que le bouton d'action se désactive pendant l'envoi (`isSubmitting` / `disabled`) : FICSIT Inc. n'indemnisera aucune Commande créée en double.
 
-```ts
-catch (error) {
-  if (error instanceof ApiError && error.field) {
-    setError(error.field as keyof FormType, { message: error.message });
-  } else {
-    setError("root", { message: "..." });
-  }
-}
-```
-
-Le tableau des règles du serveur et la liste des routes sont dans le
-README du dépôt de l'API.
-
-## Structure
-
-```
-src/
-├── App.tsx                        les routes
-├── types/order.type.ts             OrderType, OrderInputType, les paliers
-├── components/
-│   ├── Layout.component.tsx       en-tête + <Outlet />
-│   └── Consigne.component.tsx     l'échafaudage, à supprimer à la fin
-├── pages/                         les cinq pages, vides
-├── lib/                           à créer : http.ts
-└── stores/                        à créer : auth/ et order/
-```
-
-## Vérifier
+**10.2.** Avant toute livraison au sens du présent Accord, le Pionnier exécute :
 
 ```bash
 npm run lint
 npm run build
 ```
 
-Les deux doivent passer avant de rendre.
+Les deux doivent aboutir sans erreur. FICSIT Inc. décline toute responsabilité pour les Commandes — logicielles ou contractuelles — rendues sans que cette clause ait été respectée.
 
-## Voir vivre les états de chargement
+**10.3.** Pour observer les états de chargement dans des conditions représentatives d'une liaison interplanétaire, l'API accepte `SLOW_MS=1200 npm run dev`, qui ralentit chaque requête de 1,2 seconde. Toute lenteur perçue en dehors de ce mode relève d'un incident distinct, à documenter séparément.
 
-Côté API, `SLOW_MS=1200 npm run dev` ralentit chaque requête de 1,2 seconde.
-De quoi vérifier que `isSubmitting` désactive bien le bouton, et qu'un double
-clic n'envoie pas deux commandes.
+---
+
+## Article 11 — Résiliation
+
+L'engagement du Pionnier prend fin par la déconnexion, laquelle efface le Jeton du `localStorage` et met immédiatement un terme à l'accès aux routes `/tasks`. FICSIT Inc. rappelle qu'un Jeton effacé ne dit toujours rien sur l'identité du Pionnier : c'est précisément pour cela que `GET /auth/me` est rappelée à chaque démarrage, tant qu'un Jeton subsiste.
+
+---
+
+## Annexe A — Architecture technique
+
+```
+src/
+├── App.tsx                        les routes
+├── components/
+│   ├── Layout.component.tsx       en-tête + navigation
+│   ├── auth/                      Passerelle d'Authentification (voir Art. 5, non modifiée)
+│   ├── form/                      FormField, FormRootError, SubmitButton — génériques
+│   └── order/                     TierBadge, TierPicker, ResourcesField, OrderForm…
+├── hooks/useOrders.ts              ce que les trois écrans ont en commun
+├── pages/                          BoardPage, OrdersPage, HistoryPage, OrderFormPage…
+├── lib/http.ts                     l'instance axios, le Jeton, l'intercepteur
+└── stores/
+    ├── auth/                      inchangé (voir Art. 5)
+    └── order/                     order.type.ts, order.api.ts, order.store.ts
+```
+
+---
+
+## Article 12 — Droit applicable
+
+Le présent Accord est régi par le barème de notation du module **Formulaires et gestion d'état** (B2 · Ynov), à l'exclusion de tout autre droit, y compris interplanétaire. Tout litige relatif à son interprétation sera tranché en séance, oralement, sans possibilité d'appel.
+
+---
+
+*Fait à Sector 7, en un nombre d'exemplaires que FICSIT Inc. ne communique pas.*
+
+**Pour FICSIT Inc.**
+*C. Parks — Directrice Générale*
+
+**Pour le Pionnier**
+*En exécutant `npm run dev`, le Pionnier appose au présent Accord sa signature numérique, incontestable, et irréversible.*
