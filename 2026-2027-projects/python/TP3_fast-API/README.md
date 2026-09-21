@@ -1,5 +1,4 @@
-# A TRUE AND FAITHFUL ACCOUNTING OF THE BOUNDS SET UPON OUR PLAYER, WRIT IN THE OLDE TONGUE.
-
+# A TRUE AND FAITHFUL ACCOUNTING OF THE BOUNDS SET UPON OUR PLAYER, WRIT IN THE OLDE TONGUE
 ---
 
 ## Of the Preamble
@@ -37,6 +36,24 @@ Not all that is true of a player is fit for common eyes. The field `is_banned`, 
 ## Of the Player Who Cannot Be Found
 
 Should one seek a player by his `id` and find no such soul within the ledger, the API shall not feign ignorance nor return an empty silence — nay, it shall raise `HTTPException(status_code=404, detail="Joueur introuvable")`, a formal and honest proclamation that the one sought doth not exist, delivered with the dignity of a herald and the number four-hundred-and-four, which scholars of a later age shall call "not found."
+
+## An Appendix of Numbers, for the Scholars Who Distrust Mere Prose
+
+Some readers, being of a most pedantic and suspicious humour, shall not trust my word alone and shall demand the figures set down plain, as a notary sets down a dowry. To these I say: fie upon your impatience — yet here, grudgingly, the reckoning:
+
+| That Which Is Bound | The Statute | The Precise Figures |
+|---|---|---|
+| `username` | length, neither too short nor too long | no fewer than **3** letters, no more than **20** |
+| `level` | the player's station | no less than **1**, no more than **99** |
+| `hp` | present vigour | no less than **0**; and never greater than `max_hp` |
+| `max_hp` | the ceiling of vigour | no less than **0** |
+| `character_class` | the calling sworn | one of exactly **3** roads: `warrior`, `mage`, `archer` — no fourth admitted |
+| `inventory` items | the satchel's contents | each `Item` bears a `name` and `rarity`; **no two** items may share one `name` |
+| `strength` + `agility` + `intelligence` | the three humours, summed | together, no more than **30** points in total; each humour alone no less than **0** |
+| `is_banned` | the hidden shame | visible to the ledger, **hidden** from all who query `GET /players/{id}` |
+| the missing player | he who is sought and found not | answered with status **404** and the message *"Joueur introuvable"* |
+
+Let no one say hereafter that this scroll withheld its numbers — they were merely made to earn their revealing, as all true things ought.
 
 ## An Envoi
 
