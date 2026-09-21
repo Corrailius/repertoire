@@ -23,7 +23,10 @@ function PokemonCard({ pokemon }: PokemonCardProps) {
 
                 <div className="pokemon-card-artwork">
 
-                    {/* artwork temporarily disabled */}
+                    <img
+                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.dexNumber}.png`}
+                        alt={pokemon.name}
+                    />
 
                 </div>
 
